@@ -88,6 +88,14 @@ func (l *Lottery[T]) Draw() T {
 	return l.items[i].Value
 }
 
+func (l *Lottery[T]) DrawN(n int) []T {
+	out := make([]T, n)
+	for i := range n {
+		out[i] = l.Draw()
+	}
+	return out
+}
+
 // Clear removes all items from the lottery, making it empty.
 func (l *Lottery[T]) Clear() {
 	l.mu.Lock()

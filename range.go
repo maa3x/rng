@@ -15,11 +15,11 @@ func Range[T numericType](min, max T) T {
 
 	switch any(min).(type) {
 	case int, int8, int16, int32, int64:
-		return T(r.Int64N(int64(max)-int64(min)) + int64(min))
+		return T(r.Int64N(int64(max-min))) + min
 	case uint, uint8, uint16, uint32, uint64, uintptr:
-		return T(r.Uint64N(uint64(max)-uint64(min)) + uint64(min))
+		return T(r.Uint64N(uint64(max-min))) + min
 	case float32, float64:
-		return T(r.Float64()*(float64(max)-float64(min)) + float64(min))
+		return T(r.Float64()*(float64(max-min))) + min
 	default:
 		panic("unsupported type")
 	}
