@@ -11,37 +11,37 @@ func main() {
 	draw(l)
 
 	l = rng.NewLottery[string]()
-	l.Append("Alice").AppendWithWeight(2.5, "Charlie").AppendWithWeight(0.25, "Dave").AppendWithWeight(0.1, "Eve").AppendWithWeight(0.02, "Grace")
+	l.Append("Alice").AppendWeight(2.5, "Charlie").AppendWeight(0.25, "Dave").AppendWeight(0.1, "Eve").AppendWeight(0.02, "Grace")
 	draw(l)
 
 	l = rng.NewLottery[string]()
-	l.Append("Alice").AppendWithWeight(2.0, "Charlie").AppendWithWeight(1.5, "Frank")
+	l.Append("Alice").AppendWeight(2.0, "Charlie").AppendWeight(1.5, "Frank")
 	draw(l)
 
 	l = rng.NewLottery[string]()
-	l.AppendWithWeight(2.0, "Alice").AppendWithWeight(0.003, "Charlie").AppendWithWeight(1e-5, "Frank")
+	l.AppendWeight(2.0, "Alice").AppendWeight(0.003, "Charlie").AppendWeight(1e-5, "Frank")
 	draw(l)
 
 	l = rng.NewLottery[string]()
-	l.AppendWithWeight(0.25, "Alice").AppendWithWeight(2.0, "Charlie").AppendWithWeight(0, "Dave")
+	l.AppendWeight(0.25, "Alice").AppendWeight(2.0, "Charlie").AppendWeight(0, "Dave")
 	draw(l)
 
 	l = rng.NewLottery[string]()
-	l.Append("Alice").AppendWithWeight(0.1, "Charlie").AppendWithWeight(0, "Dave")
+	l.Append("Alice").AppendWeight(0.1, "Charlie").AppendWeight(0, "Dave")
 	draw(l)
 
 	l = rng.NewLottery("Alice", "Bob", "Charlie")
 	draw(l)
 
-	l = rng.NewLottery("Dave").AppendWithWeight(-1, "Alice", "Bob", "Charlie")
+	l = rng.NewLottery("Dave").AppendWeight(-1, "Alice", "Bob", "Charlie")
 	draw(l)
 
 	l = rng.NewLottery[string]()
-	l.AppendWithWeight(-1, "Alice", "Bob", "Charlie")
+	l.AppendWeight(-1, "Alice", "Bob", "Charlie")
 	draw(l)
 
 	l = rng.NewLottery[string]()
-	l.AppendWithWeight(0.1, "Alice", "Bob", "Charlie")
+	l.AppendWeight(0.1, "Alice", "Bob", "Charlie")
 	draw(l)
 }
 

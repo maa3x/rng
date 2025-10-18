@@ -34,16 +34,28 @@ func (l *Lottery[T]) Append(values ...T) *Lottery[T] {
 	return l
 }
 
-// AppendWithWeight adds one or more values to the lottery with the specified weight.
+// AppendWeight adds one or more values to the lottery with the specified weight.
 // The weight determines the probability of each value being selected during a draw.
 // Higher weights increase the likelihood of selection. weight <= 0 means the item will never be drawn.
-func (l *Lottery[T]) AppendWithWeight(weight float64, values ...T) *Lottery[T] {
+func (l *Lottery[T]) AppendWeight(weight float64, values ...T) *Lottery[T] {
 	l.mu.Lock()
 	for i := range values {
 		l.items = append(l.items, &lotteryItem[T]{Weight: weight, Value: values[i]})
 	}
 	l.mu.Unlock()
 
+	return l
+}
+
+// AppendWeights adds multiple items to the lottery with their associated weights.
+func (l *Lottery[T]) AppendWeights(items map[float64][]T) *Lottery[T] {
+	l.mu.Lock()
+	for weight, values := range items {
+		for i := range values {
+			l.items = append(l.items, &lotteryItem[T]{Weight: weight, Value: values[i]})
+		}
+	}
+	l.mu.Unlock()
 	return l
 }
 
